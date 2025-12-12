@@ -1,0 +1,210 @@
+<html><body><h1>src/calculator/calculator.py</h1>Killed 0 out of 19 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 1</h3><pre>--- src/calculator/calculator.py
++++ src/calculator/calculator.py
+@@ -11,7 +11,7 @@
+ class Calculator:
+     """Calculator class providing basic arithmetic operations."""
+ 
+-    MAX_VALUE = 1e6
++    MAX_VALUE = 2000000.0
+     MIN_VALUE = -1e6
+ 
+     def _validate_input(self, *values):
+</pre><h3>Mutant 2</h3><pre>--- src/calculator/calculator.py
++++ src/calculator/calculator.py
+@@ -11,7 +11,7 @@
+ class Calculator:
+     """Calculator class providing basic arithmetic operations."""
+ 
+-    MAX_VALUE = 1e6
++    MAX_VALUE = None
+     MIN_VALUE = -1e6
+ 
+     def _validate_input(self, *values):
+</pre><h3>Mutant 3</h3><pre>--- src/calculator/calculator.py
++++ src/calculator/calculator.py
+@@ -12,7 +12,7 @@
+     """Calculator class providing basic arithmetic operations."""
+ 
+     MAX_VALUE = 1e6
+-    MIN_VALUE = -1e6
++    MIN_VALUE = +1e6
+ 
+     def _validate_input(self, *values):
+         """Validate that all input values are within the allowed range.
+</pre><h3>Mutant 4</h3><pre>--- src/calculator/calculator.py
++++ src/calculator/calculator.py
+@@ -12,7 +12,7 @@
+     """Calculator class providing basic arithmetic operations."""
+ 
+     MAX_VALUE = 1e6
+-    MIN_VALUE = -1e6
++    MIN_VALUE = -2000000.0
+ 
+     def _validate_input(self, *values):
+         """Validate that all input values are within the allowed range.
+</pre><h3>Mutant 5</h3><pre>--- src/calculator/calculator.py
++++ src/calculator/calculator.py
+@@ -12,7 +12,7 @@
+     """Calculator class providing basic arithmetic operations."""
+ 
+     MAX_VALUE = 1e6
+-    MIN_VALUE = -1e6
++    MIN_VALUE = None
+ 
+     def _validate_input(self, *values):
+         """Validate that all input values are within the allowed range.
+</pre><h3>Mutant 6</h3><pre>--- src/calculator/calculator.py
++++ src/calculator/calculator.py
+@@ -24,7 +24,7 @@
+             InvalidInputException: If any input is outside valid range or not a number
+         """
+         for value in values:
+-            if not isinstance(value, (int, float)):
++            if  isinstance(value, (int, float)):
+                 raise InvalidInputException(f"Input {value} is not a valid number")
+             if value > self.MAX_VALUE or value < self.MIN_VALUE:
+                 raise InvalidInputException(
+</pre><h3>Mutant 7</h3><pre>--- src/calculator/calculator.py
++++ src/calculator/calculator.py
+@@ -25,7 +25,7 @@
+         """
+         for value in values:
+             if not isinstance(value, (int, float)):
+-                raise InvalidInputException(f"Input {value} is not a valid number")
++                raise InvalidInputException(f"XXInput {value} is not a valid numberXX")
+             if value > self.MAX_VALUE or value < self.MIN_VALUE:
+                 raise InvalidInputException(
+                     f"Input {value} is outside the valid range "
+</pre><h3>Mutant 8</h3><pre>--- src/calculator/calculator.py
++++ src/calculator/calculator.py
+@@ -26,7 +26,7 @@
+         for value in values:
+             if not isinstance(value, (int, float)):
+                 raise InvalidInputException(f"Input {value} is not a valid number")
+-            if value > self.MAX_VALUE or value < self.MIN_VALUE:
++            if value >= self.MAX_VALUE or value < self.MIN_VALUE:
+                 raise InvalidInputException(
+                     f"Input {value} is outside the valid range "
+                     f"[{self.MIN_VALUE}, {self.MAX_VALUE}]"
+</pre><h3>Mutant 9</h3><pre>--- src/calculator/calculator.py
++++ src/calculator/calculator.py
+@@ -26,7 +26,7 @@
+         for value in values:
+             if not isinstance(value, (int, float)):
+                 raise InvalidInputException(f"Input {value} is not a valid number")
+-            if value > self.MAX_VALUE or value < self.MIN_VALUE:
++            if value > self.MAX_VALUE or value <= self.MIN_VALUE:
+                 raise InvalidInputException(
+                     f"Input {value} is outside the valid range "
+                     f"[{self.MIN_VALUE}, {self.MAX_VALUE}]"
+</pre><h3>Mutant 10</h3><pre>--- src/calculator/calculator.py
++++ src/calculator/calculator.py
+@@ -26,7 +26,7 @@
+         for value in values:
+             if not isinstance(value, (int, float)):
+                 raise InvalidInputException(f"Input {value} is not a valid number")
+-            if value > self.MAX_VALUE or value < self.MIN_VALUE:
++            if value > self.MAX_VALUE and value < self.MIN_VALUE:
+                 raise InvalidInputException(
+                     f"Input {value} is outside the valid range "
+                     f"[{self.MIN_VALUE}, {self.MAX_VALUE}]"
+</pre><h3>Mutant 11</h3><pre>--- src/calculator/calculator.py
++++ src/calculator/calculator.py
+@@ -28,7 +28,7 @@
+                 raise InvalidInputException(f"Input {value} is not a valid number")
+             if value > self.MAX_VALUE or value < self.MIN_VALUE:
+                 raise InvalidInputException(
+-                    f"Input {value} is outside the valid range "
++                    f"XXInput {value} is outside the valid range XX"
+                     f"[{self.MIN_VALUE}, {self.MAX_VALUE}]"
+                 )
+ 
+</pre><h3>Mutant 12</h3><pre>--- src/calculator/calculator.py
++++ src/calculator/calculator.py
+@@ -29,7 +29,7 @@
+             if value > self.MAX_VALUE or value < self.MIN_VALUE:
+                 raise InvalidInputException(
+                     f"Input {value} is outside the valid range "
+-                    f"[{self.MIN_VALUE}, {self.MAX_VALUE}]"
++                    f"XX[{self.MIN_VALUE}, {self.MAX_VALUE}]XX"
+                 )
+ 
+     def add(self, a, b):
+</pre><h3>Mutant 13</h3><pre>--- src/calculator/calculator.py
++++ src/calculator/calculator.py
+@@ -46,7 +46,7 @@
+             InvalidInputException: If any input is outside valid range
+         """
+         self._validate_input(a, b)
+-        return a + b
++        return a - b
+ 
+     def subtract(self, a, b):
+         """Subtract b from a.
+</pre><h3>Mutant 14</h3><pre>--- src/calculator/calculator.py
++++ src/calculator/calculator.py
+@@ -62,7 +62,7 @@
+             InvalidInputException: If any input is outside valid range
+         """
+         self._validate_input(a, b)
+-        return a - b
++        return a + b
+ 
+     def multiply(self, a, b):
+         """Multiply two numbers.
+</pre><h3>Mutant 15</h3><pre>--- src/calculator/calculator.py
++++ src/calculator/calculator.py
+@@ -78,7 +78,7 @@
+             InvalidInputException: If any input is outside valid range
+         """
+         self._validate_input(a, b)
+-        return a * b
++        return a / b
+ 
+     def divide(self, a, b):
+         """Divide a by b.
+</pre><h3>Mutant 16</h3><pre>--- src/calculator/calculator.py
++++ src/calculator/calculator.py
+@@ -95,7 +95,7 @@
+             ValueError: If b is zero
+         """
+         self._validate_input(a, b)
+-        if b == 0:
++        if b != 0:
+             raise ValueError("Cannot divide by zero")
+         return a / b
+ 
+</pre><h3>Mutant 17</h3><pre>--- src/calculator/calculator.py
++++ src/calculator/calculator.py
+@@ -95,7 +95,7 @@
+             ValueError: If b is zero
+         """
+         self._validate_input(a, b)
+-        if b == 0:
++        if b == 1:
+             raise ValueError("Cannot divide by zero")
+         return a / b
+ 
+</pre><h3>Mutant 18</h3><pre>--- src/calculator/calculator.py
++++ src/calculator/calculator.py
+@@ -96,7 +96,7 @@
+         """
+         self._validate_input(a, b)
+         if b == 0:
+-            raise ValueError("Cannot divide by zero")
++            raise ValueError("XXCannot divide by zeroXX")
+         return a / b
+ 
+ 
+</pre><h3>Mutant 19</h3><pre>--- src/calculator/calculator.py
++++ src/calculator/calculator.py
+@@ -97,7 +97,7 @@
+         self._validate_input(a, b)
+         if b == 0:
+             raise ValueError("Cannot divide by zero")
+-        return a / b
++        return a * b
+ 
+ 
+ 
+</pre></body></html>
